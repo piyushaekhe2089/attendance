@@ -36,12 +36,25 @@
                             <tbody>
                                 <tr ng-repeat="circle in $ctrl.circles | filter:$ctrl.query">
                                     <td>{{ circle.id }}</td>
-                                    <td>{{ circle.name }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-primary" 
-                                        data-toggle="modal" data-target="#mediumCircleModal" data-id="circle">
-                                            Edit
-                                        </button>
+                                        <span editable-text="circle.name" e-name="name" e-form='circleForm'>
+                                            {{ circle.name }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <form editable-form name="circleForm" onbeforesave="$ctrl.edit($data, circle.id)" ng-show="circleForm.$visible"
+                                            class="form-buttons form-inline">
+                                            <button type="submit" ng-disabled="circleForm.$waiting" class="btn btn-primary">
+                                                save
+                                            </button>
+                                            <button type="button" ng-disabled="circleForm.$waiting" ng-click="circleForm.$cancel()" class="btn btn-default">
+                                                cancel
+                                            </button>
+                                        </form>
+                                        <div class="buttons" ng-show="!circleForm.$visible">
+                                            <button type="button" class="btn btn-primary" ng-click="circleForm.$show()">Edit</button>
+                                            <!--<button type="button" class="btn btn-danger">del</button>-->
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
