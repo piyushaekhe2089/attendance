@@ -1,0 +1,55 @@
+<div class="animated fadeIn">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong class="card-title">Approvals Table</strong>
+                </div>
+                <div class="card-body">
+                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Claim Submitted by</th>
+                                <th>Task</th>
+                                <th>From Location</th>
+                                <th>To Location</th>
+                                <th>Distance</th>
+                                <th>Travel Mode</th>
+                                <th>Conveyance</th>
+                                <th>Night meal Conveyance</th>
+                                <th>Loadging and Meal</th>
+                                <th>Claim Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="claim in $ctrl.approvals"> <!--| filter:$ctrl.query">-->
+                                <td>{{ claim.task.employee.name }}</td>
+                                <td>{{ claim.task.title }}</td>
+                                <td>{{ claim.from_location }}</td>
+                                <td>{{ claim.to_location }}</td>
+                                <td>{{ claim.distance }}</td>
+                                <td>{{ claim.travel_mode }}</td>
+                                <td>{{ claim.conveyance }}</td>
+                                <td>{{ claim.night_meal }}</td>
+                                <td>{{ claim.loadging_meal }}</td>
+                                <td>{{ claim.status }}</td>
+                                <td style="white-space: nowrap">
+                                    <div class="buttons">
+                                        <button type="button" class="btn btn-primary" ng-click="$ctrl.approveRejectExpense(claim, $index, 'Approved')" ng-disabled="!$ctrl.enabledEdit[{{$index}}]">
+                                            Approve
+                                        </button>
+                                        <button type="button" ng-click="$ctrl.approveRejectExpense(claim, $index, 'Rejected')" class="btn btn-default" ng-disabled="!$ctrl.enabledEdit[{{$index}}]">
+                                            Reject
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- .animated -->
+

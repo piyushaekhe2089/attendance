@@ -1,0 +1,46 @@
+<div class="animated fadeIn">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong class="card-title">Photo Approvals Table</strong>
+                </div>
+                <div class="card-body">
+                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Employee Name</th>
+                                <th>Image</th>
+                                <th>Approved</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="emp in $ctrl.employees"> <!--| filter:$ctrl.query">-->
+                                <td>{{ emp.name }}</td>
+                                <td>
+                                    <div class="user-area">
+                                        <img class="user-avatar rounded-circle" ng-src="{{emp.image_url}}" />
+                                    </div>
+                                </td>
+                                <td>{{ emp.image_approved }}</td>
+                                <td style="white-space: nowrap">
+                                    <div class="buttons">
+                                        <button type="button" class="btn btn-primary" ng-click="$ctrl.approveRejectPhoto(emp, $index, true)">
+                                            Approve
+                                        </button>
+                                        <button type="button" class="btn btn-default" ng-click="$ctrl.approveRejectPhoto(emp, $index, false)">
+                                            Reject
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- .animated -->
+

@@ -1,0 +1,97 @@
+<div class="animated fadeIn">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong class="card-title">Expense Table</strong>
+                </div>
+                <div class="card-body">
+                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Task</th>
+                                <th>Task Description</th>
+                                <th>Assigned by</th>
+                                <th>From Location</th>
+                                <th>To Location</th>
+                                <th>Distance</th>
+                                <th>Travel Mode</th>
+                                <th>Conveyance</th>
+                                <th>Night meal Conveyance</th>
+                                <th>Loadging and Meal</th>
+                                <th>Claim Status</th>
+                                <!--<th>Contact</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="claim in $ctrl.claims"> <!--| filter:$ctrl.query">-->
+                                <td>{{ claim.id }}</td>
+                                <td>
+                                    <input name="task_title" ng-model="claim.task.title" ng-disabled="!$ctrl.enabledEdit[{{$index}}]"/>
+                                </td>
+                                <td>
+                                    <textarea name="task_description" ng-model="claim.task.description" ng-disabled="!$ctrl.enabledEdit[{{$index}}]"></textarea>
+                                </td>
+                                <td>
+                                    <select name="created_by" ng-model="claim.task.created_by" ng-options="option as option.name for option in $ctrl.rgm track by option.id" ng-disabled="!$ctrl.enabledEdit[{{$index}}]"></select>
+                                </td>
+                                <td>{{ claim.from_location }}</td>
+                                <td>{{ claim.to_location }}</td>
+                                <td>{{ claim.distance }}</td>
+                                <td>
+                                    <input id="travel_mode_{{$index}}" name="travel_mode" ng-model="claim.travel_mode" ng-disabled="true"/> 
+                                    <div ng-repeat="option in $ctrl.travel_mode">
+                                        <input type="checkbox" name="{{option}}" value="{{option}}" 
+                                        ng-disabled="!$ctrl.enabledEdit[{{$parent.$index}}]"
+                                        ng-click="$ctrl.update_travel_mode($parent.$index, option)">{{option}}<br/>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input name="claim_conveyance" ng-model="claim.conveyance" ng-disabled="!$ctrl.enabledEdit[{{$index}}]"/>
+                                </td>
+                                <td>
+                                    <input name="claim_night_meal" ng-model="claim.night_meal" ng-disabled="!$ctrl.enabledEdit[{{$index}}]"/>
+                                </td>
+                                <td>
+                                    <input name="claim_loadging_meal" ng-model="claim.loadging_meal" ng-disabled="!$ctrl.enabledEdit[{{$index}}]"/>
+                                </td>
+                                <td>{{ claim.status }}</td>
+                                <!--<td>{{ employee.contact }}</td>-->
+                                <td style="white-space: nowrap">
+                                    <div class="buttons" ng-show="!$ctrl.enabledEdit[{{$index}}]">
+                                        <button type="button" class="btn btn-primary" ng-click="$ctrl.editClaim($index)"
+                                        ng-disabled="!claim.to_location">edit</button>
+                                    </div>
+                                    <div class="buttons" ng-show="$ctrl.enabledEdit[{{$index}}]">
+                                        <button type="button" class="btn btn-primary" ng-click="$ctrl.submitExpense(claim, $index)">
+                                            save
+                                        </button>
+                                        <button type="button" ng-click="$ctrl.cancelEnabledEdit($index)" class="btn btn-default">
+                                            cancel
+                                        </button>
+                                    </div>
+                                    <!-- form 
+                                    <form editable-form name="rowform" onbeforesave="$ctrl.submitExpense($data, claim.id)" ng-show="rowform.$visible"
+                                        class="form-buttons form-inline" shown="inserted == claim">
+                                        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                                            save
+                                        </button>
+                                        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                            cancel
+                                        </button>
+                                    </form>
+                                    <div class="buttons" ng-show="!rowform.$visible">
+                                        <button type="button" class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+                                    </div>-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- .animated -->
+

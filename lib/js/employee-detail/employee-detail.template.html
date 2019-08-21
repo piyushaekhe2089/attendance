@@ -1,0 +1,144 @@
+            <div class="animated fadeIn">
+                <div class="row">                    
+                     <div class="col-md-12">
+                        <aside class="profile-nav alt">
+                            <div class="card">
+                                <div class="card-header user-header alt bg-dark">
+                                    <div class="media">
+                                        <a href="#">
+				            <img ng-if="$ctrl.employee.image != null && $ctrl.employee.image_approved == true" class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" ng-src="{{$ctrl.employee.image_url}}" alt="User Avatar">
+                            <img ng-if="$ctrl.employee.image == null || $ctrl.employee.image_approved == false" class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" src="images/empty_profile.png" alt="User Avatar">
+                                        </a>
+                                        <div class="media-body">
+						<h2 class="text-light display-6">{{ $ctrl.employee.name }}</h2>
+						<p>{{ $ctrl.employee.designation.name }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+				<div class="card-body card-block">
+					<!--<form action="#" method="post" class="form-horizontal">-->
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-name" >Name</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label for="hf-name" >{{ $ctrl.employee.name }}</label>
+					</div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-code" >Employee Code</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label for="hf-code" >{{ $ctrl.employee.code }}</label>
+					</div>
+                                    </div>				    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-management_resource" >Role</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label for="hf-management_resource" >{{ $ctrl.employee.role.name }}</label>
+					</div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-contact" >Contact</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label for="hf-contact" >{{ $ctrl.employee.contact }}</label>
+					</div>
+                                    </div>				    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-own_partner" >Own/Partner</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label for="hf-own_partner" >{{ $ctrl.employee.own_partner.name }}</label>
+					</div>
+                                    </div>				   
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-reporting_manager" >Reporting Manager</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label ng-repeat="repm in $ctrl.employee.reporting_manager" for="hf-reporting_manager" >
+							<a href="#!/employee/{{ repm.id }}">{{ repm.name }}</a>
+						</label>
+					</div>
+                                    </div>				    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-regional_manager" >Regional Manager</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label ng-repeat="regm in $ctrl.employee.regional_manager" for="hf-regional_manager" >
+							<a href="#!/employee/{{ regm.id }}"> {{ regm.name }}</a>
+						</label>
+					</div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-home_location" >Project/Billable</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label for="hf-name" >{{ $ctrl.employee.project_billable }}</label>
+					</div>
+                                    </div>				    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-home_location" >Company Email ID</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label for="hf-name" >{{ $ctrl.employee.company_email }}</label>
+					</div>
+                                    </div>				    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-home_location" >Personal Email ID</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label for="hf-name" >{{ $ctrl.employee.personal_email }}</label>
+					</div>
+                                    </div>				    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-circle" >Circle</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label for="hf-circle" >{{ $ctrl.employee.circle.name }}</label>
+					</div>
+                                    </div>				    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-home_location" >Home Location</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label for="hf-name" >{{ $ctrl.employee.home_location }}</label>
+					</div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-home_location" >Joining Date</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label for="hf-name" >{{ $ctrl.employee.doj }}</label>
+					</div>
+                                    </div>				    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-home_location" >Insurance Opted</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<label for="hf-name" >{{ $ctrl.employee.insurance_opted }}</label>
+					</div>
+                                    </div>				    
+				    <!--</form>-->
+                            </div>
+
+                            </div>
+                        </aside>
+                    </div>
+		</div>
+	    </div>

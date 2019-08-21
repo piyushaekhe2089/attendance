@@ -1,0 +1,73 @@
+            <div class="animated fadeIn">
+                <div class="row">                    
+                     <div class="col-md-12">
+                        <aside class="profile-nav alt">
+                            <div class="card">
+                                <div class="card-header">
+					<strong>Upload Profile Photo</strong>
+                                </div>
+
+				<div class="card-body card-block">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+					</div>
+                                        <div class="col-12 col-md-9">
+					<div class="sufee-alert alert with-close alert-success" ng-show="$ctrl.success">
+                                        <span class="badge badge-pill badge-success">Success</span>
+                                        Photo successfully uploaded
+                                        <button class="close" type="button" data-dismiss="alert" ng-click="$ctrl.success=false">
+                                            <span>x</span>
+                                        </button>
+                                    </div>
+					<div class="sufee-alert alert with-close alert-danger" ng-show="$ctrl.error">
+                                        <span class="badge badge-pill badge-danger">Error</span>
+                                        Error while uploading photo
+                                        <button class="close" type="button" data-dismiss="alert" ng-click="$ctrl.error=false">
+                                            <span>x</span>
+                                        </button>
+                                    </div>
+					</div>
+				    </div>
+				<form novalidate name="employeeEditForm" action="#" method="post" class="form-horizontal">
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-name" >Image</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<img ng-if="$ctrl.employee.image != null && $ctrl.employee.image_approved == true" ng-src='{{$ctrl.employee.image_url}}' width="200px" height="200px"/>
+						<img ng-if="$ctrl.employee.image == null || $ctrl.employee.image_approved == false" ng-src="images/empty_profile.png" width="200px" height="200px"/>
+					</div>
+                                    </div>
+ 
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+						<label for="hf-code" >Select File</label>
+					</div>
+                                        <div class="col-12 col-md-9">
+						<input name="image" type="file" file-model="$ctrl.employee.image" ng-required/>
+						<span ng-show="employeeEditForm.code.$touched && employeeEditForm.code.$error.required">
+							File input can not be blank.
+						</span>
+					</div>
+                                    </div>
+                                    <div class="row form-group">
+				       <div class="col-md-3">
+				       </div>
+				       <div class="col-md-2">
+					 <button ng-click="$ctrl.save()" class="btn btn-primary btn-sm btn-block" type="button">Submit</button>
+				       </div>
+				       <div class="col-md-2">
+					       <button ng-click="'#!/employee/{{$ctrl.employee.id}}'| redirect" class="btn btn-secondary btn-sm btn-block" type="button">Cancel</button>
+				       </div>
+				    </div>
+				    </form>
+                            </div>
+			    <div class="card-footer">
+                            </div>
+
+                            </div>
+                        </aside>
+                    </div>
+		</div>
+	    </div>

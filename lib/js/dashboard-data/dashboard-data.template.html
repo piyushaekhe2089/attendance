@@ -1,0 +1,107 @@
+<div class="animated fadeIn">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-header">
+					<h4>Attendance</h4>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-lg-3">
+							<div class="stat-widget-five">
+								<div class="stat-icon dib flat-color-3" style="top:0px;">
+									<i class="fa fa-calendar"></i>
+								</div>
+								<div class="stat-content">
+									<div class="text-left dib">
+										<div class="stat-heading">{{$ctrl.currentYear}}</div>
+										<div class="stat-text"><span
+												class="count">{{$ctrl.attendance}}/{{$ctrl.year_days}}</span></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-2">
+							<div class="progress-box progress-1">
+								<h4 class="por-title">Today's Status</h4>
+								<div ng-if="$ctrl.check_in == false" class="por-txt">
+									Travel not yet started!
+								</div>
+								<div ng-if="$ctrl.check_in == true" class="por-txt">
+									Travel started at {{$ctrl.check_in_time}}
+								</div>
+								<div style="height:50px;">
+									<button ng-hide="$ctrl.check_in == true" class="btn btn-primary" type="button" ng-click="$ctrl.signin(true)">Check
+										In</button>
+									<button ng-hide="$ctrl.check_in == false" class="btn btn-danger" type="button" ng-click="$ctrl.signin(false)">Check
+										Out</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /# card -->
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-header">
+					<h4>Team Status</h4>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-lg-8">
+							<div class="card-body">
+								<!--<leaflet center="$ctrl.map.center" markers="$ctrl.map.markers" height="480px" width="100%"></leaflet>-->
+								<mapboxgl gl-center="{lat: 20.5937, lng: 78.9629}" gl-zoom="{value: 4}" gl-markers="$ctrl.map.glMarkers"></mapboxgl>
+							</div>
+						</div>
+					
+						<div class="col-lg-4">
+							<div class="card-header">
+								<h3>Resources Today's Status till now</h3>
+							</div>
+							<div class="card-body">
+								<div class="progress-box progress-1">
+									<h4 class="por-title">Working</h4>
+									<div class="por-txt">{{$ctrl.logged_in_size}}/{{$ctrl.team_size}}</div>
+									<!--
+									<div class="progress mb-2" style="height: 5px;">
+										<div class="progress-bar bg-flat-color-1" role="progressbar" style="width: 40%;" aria-valuenow="25"
+											aria-valuemin="0" aria-valuemax="100">
+										</div>
+									</div>
+									-->
+								</div>
+								<div class="progress-box progress-2">
+									<h4 class="por-title">Finished Work</h4>
+									<div class="por-txt">{{$ctrl.logged_out_size}}/{{$ctrl.team_size}}</div>
+									<!--
+									<div class="progress mb-2" style="height: 5px;">
+										<div class="progress-bar bg-flat-color-1" role="progressbar" style="width: 40%;" aria-valuenow="25"
+											aria-valuemin="0" aria-valuemax="100">
+										</div>
+									</div>
+									-->
+								</div>
+								<div class="progress-box progress-1">
+									<h4 class="por-title">Idle</h4>
+									<div class="por-txt">{{$ctrl.idle_size}}/{{$ctrl.team_size}}</div>
+									<!--
+									<div class="progress mb-2" style="height: 5px;">
+										<div class="progress-bar bg-flat-color-1" role="progressbar" style="width: 40%;" aria-valuenow="25"
+											aria-valuemin="0" aria-valuemax="100">
+										</div>
+									</div>
+									-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

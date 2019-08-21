@@ -1,0 +1,264 @@
+<div class="animated fadeIn">
+	<div class="row">
+		<div class="col-md-12">
+			<aside class="profile-nav alt">
+				<div class="card">
+					<div class="card-header">
+						<strong>Add Employee</strong>
+					</div>
+
+					<div class="card-body card-block">
+						<div class="row form-group">
+							<div class="col col-md-3">
+							</div>
+							<div class="col-12 col-md-9">
+								<div class="sufee-alert alert with-close alert-success" ng-show="$ctrl.success">
+									<span class="badge badge-pill badge-success">Success</span>
+									Employee successfully added
+									<button class="close" type="button" data-dismiss="alert"
+										ng-click="$ctrl.success=false">
+										<span>x</span>
+									</button>
+								</div>
+								<div class="sufee-alert alert with-close alert-danger" ng-show="$ctrl.error">
+									<span class="badge badge-pill badge-danger">Error</span>
+									Error while adding employee
+									<button class="close" type="button" data-dismiss="alert"
+										ng-click="$ctrl.error=false">
+										<span>x</span>
+									</button>
+								</div>
+							</div>
+						</div>
+						<form novalidate name="employeeAddForm" action="#" method="post" class="form-horizontal">
+
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-name">Name</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input name="name" class="form-control" id="hf-name" type="text"
+										placeholder="Enter Name..." ng-model="$ctrl.employee.name" ng-required="true">
+									<span
+										ng-show="employeeAddForm.name.$touched && employeeAddForm.name.$error.required">
+										Name can not be blank.
+									</span>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-photo">Photo</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input name="photo" class="form-control" id="hf-name" type="file"
+										placeholder="Select File..." ng-model="$ctrl.employee.photo">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-id_card">ID Card</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input name="id_card" class="form-control" id="hf-name" type="file"
+										placeholder="Select file..." ng-model="$ctrl.employee.id_card">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-code">Employee Code</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input name="code" class="form-control" id="hf-code" type="text"
+										placeholder="Enter Code..." ng-model="$ctrl.employee.code" ng-required="true">
+									<span
+										ng-show="employeeAddForm.code.$touched && employeeAddForm.code.$error.required">
+										Employee Code can not be blank.
+									</span>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-designation">Designation</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<select class="form-control" name="designation"
+										ng-model="$ctrl.employee.designation" ng-required="true">
+										<option ng-repeat="option in $ctrl.designations" ng-value="option.id">
+											{{option.name}}</option>
+									</select>
+									<span
+										ng-show="employeeAddForm.designation.$touched && employeeAddForm.designation.$error.required">
+										Please select Designation
+									</span>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-role">Role</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<select class="form-control" name="role" ng-model="$ctrl.employee.role"
+										ng-required="true">
+										<option ng-repeat="option in $ctrl.roles" ng-value="option.id">{{option.name}}
+										</option>
+									</select>
+									<span
+										ng-show="employeeAddForm.role.$touched && employeeAddForm.role.$error.required">
+										Please select Role
+									</span>
+								</div>
+							</div>
+
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-own_partner">Own/Partner</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<select class="form-control" name="own_partner"
+										ng-model="$ctrl.employee.own_partner" ng-required="true">
+										<option ng-repeat="option in $ctrl.own_partner" ng-value="option.id">
+											{{option.name}}</option>
+									</select>
+									<span
+										ng-show="employeeAddForm.own_partner.$touched && employeeAddForm.own_partner.$error.required">
+										Please select
+									</span>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-own_partner">Project/Billable</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<select class="form-control" name="project_billable"
+										ng-model="$ctrl.employee.project_billable" ng-required="true">
+										<option ng-repeat="option in $ctrl.pb_choices" ng-value="option[0]">
+											{{option[0]}}</option>
+									</select>
+									<span
+										ng-show="employeeAddForm.project_billable.$touched && employeeAddForm.project_billable.$error.required">
+										Please select
+									</span>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-reporting_manager">Reporting Manager</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<select name="reporting_manager" class="form-control" size="6"
+										ng-model="$ctrl.employee.reporting_manager" ng-required="true" multiple>
+										<option ng-repeat="option in $ctrl.rgm" ng-value="option.id">{{option.name}}
+										</option>
+									</select>
+									<span
+										ng-show="employeeAddForm.reporting_manager.$touched && employeeAddForm.reporting_manager.$error.required">
+										Please select atleast one
+									</span>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-regional_manager">Regional Manager</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<select name="regional_manager" class="form-control" size="6"
+										ng-model="$ctrl.employee.regional_manager"
+										ng-model="$ctrl.employee.regional_manager" ng-required="true" multiple>
+										<option ng-repeat="option in $ctrl.rgm" ng-value="option.id">{{option.name}}
+										</option>
+									</select>
+									<span
+										ng-show="employeeAddForm.regional_manager.$touched && employeeAddForm.regional_manager.$error.required">
+										Please select atleast one
+									</span>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-circle">Circle</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<select name="circle" class="form-control" ng-model="$ctrl.employee.circle"
+										ng-required="true">
+										<option ng-repeat="option in $ctrl.circles" ng-value="option.id">{{option.name}}
+										</option>
+										<option value="" label="Select"></option>
+									</select>
+									<span
+										ng-show="employeeAddForm.circle.$touched && employeeAddForm.circle.$error.required">
+										Please select
+									</span>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-home_location">Home Location</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input ng-model="$ctrl.employee.home_location" name="home_location"
+										class="form-control" id="hf-home_location" type="text"
+										placeholder="Enter Home location...">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-contact">Contact</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input name="contact" class="form-control" id="hf-contact" type="text"
+										placeholder="Enter Contact..." ng-model="$ctrl.employee.contact">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-company_email">Company Emial ID</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input name="company_email" class="form-control" id="hf-company_email" type="text"
+										placeholder="Enter Company Email..." ng-model="$ctrl.employee.company_email">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-personal_email">Personal Email ID</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input name="personal_email" class="form-control" id="hf-personal_email" type="text"
+										placeholder="Enter Personal Email..." ng-model="$ctrl.employee.personal_email">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-insurance_opted">Insurance</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<select name="insurance_opted" class="form-control"
+										ng-model="$ctrl.employee.insurance_opted" ng-required="true">
+										<option ng-value="False">No</option>
+										<option ng-value="True">Yes</option>
+									</select>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-3">
+								</div>
+								<div class="col-md-5">
+									<button ng-click="$ctrl.save()" class="btn btn-primary btn-lg btn-block"
+										type="button">Submit</button>
+								</div>
+								<div class="col-md-4">
+									<button ng-click="'#!/employee'| redirect"
+										class="btn btn-secondary btn-lg btn-block" type="button">Cancel</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="card-footer">
+					</div>
+
+				</div>
+			</aside>
+		</div>
+	</div>
+</div>
