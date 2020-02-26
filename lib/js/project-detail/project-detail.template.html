@@ -1,0 +1,120 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <aside class="profile-nav alt">
+                <div class="card">
+                    <div class="card-header user-header alt bg-dark">
+                        <div class="media">
+                            <div class="media-body">
+                                <h2 class="text-light display-6">
+                                    {{ $ctrl.project.project_name }}
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body card-block">
+                        <!--<form action="#" method="post" class="form-horizontal">-->
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="hf-project_name">Name</label>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <label for="hf-project_name">{{ $ctrl.project.project_name }}</label>
+                            </div>                           
+                            <div class="col-12 col-md-4">
+                                <a href="" ng-click="$ctrl.goTo('NodeActivity')">Node Activity Deployment</a>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="hf-customer_name">Customer Name</label>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <label for="hf-customer_name">{{ $ctrl.project.customer_name }}</label>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a href="" ng-click="$ctrl.goTo('LinkAtp')">Link Commissioning and ATP Activity</a>
+                            </div>                            
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="hf-stcs_project_manager">STCS Project Manager</label>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <label
+                                    for="hf-stcs_project_manager">{{ $ctrl.project.stcs_project_manager.name }}</label>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a href="" ng-click="$ctrl.goTo('CardAddition')">Card Addition Activity</a>
+                            </div>                                                        
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="hf-stcs_project_manager_email">STCS Project Manager Email</label>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <label
+                                    for="hf-stcs_project_manager_email">{{ $ctrl.project.stcs_project_manager.company_email }}</label>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a href="" ng-click="$ctrl.goTo('DInstallation')">De-Installation Activity</a>
+                            </div>                            
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="hf-customer_project_manager">Customer Project Manager</label>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <label
+                                    for="hf-customer_project_manager">{{ $ctrl.project.customer_project_manager }}</label>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <a href="" ng-click="$ctrl.goTo('ManDayRevisit')">Manday-Revisit Activity</a>
+                            </div>                            
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="hf-customer_project_manager_email">Customer Project Manager Email</label>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <label
+                                    for="hf-customer_project_manager_email">{{ $ctrl.project.customer_project_manager_email }}</label>
+                            </div>
+                        </div>
+                        <!--</form>-->
+                    </div>
+
+                </div>
+            </aside>
+            <div class="card">
+                <div class="card-header">
+                    <strong class="card-title">Quote Details</strong>
+                </div>
+                <div class="card-body">
+                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Quote No</th>
+                                <th>Quote File</th>
+                                <th>PO No</th>
+                                <th>PO File</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="quote in $ctrl.project.quote_set">
+                                <!--| filter:$ctrl.query">-->
+                                <td>{{ quote.quote_no }}</td>
+                                <td><input name="image" type="file" files-model="quote.quote_file" ng-required multiple/>
+                                    <button ng-click="$ctrl.save_quote_docs(quote)" class="btn btn-primary btn-sm btn-block"
+                                    type="button">Submit</button>
+                                    {{ quote.quote_file }}</td>
+                                <td>{{ quote.po_no }}</td>
+                                <td>{{ quote.po_file }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

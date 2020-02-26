@@ -1,0 +1,199 @@
+<div class="animated fadeIn">
+	<div class="row">
+		<div class="col-md-12">
+			<aside class="profile-nav alt">
+				<div class="card">
+					<div class="card-header">
+						<strong>Project</strong>
+					</div>
+
+					<div class="card-body card-block">
+						<div class="row form-group">
+							<div class="col col-md-3">
+							</div>
+							<div class="col-12 col-md-9">
+								<div class="sufee-alert alert with-close alert-success" ng-show="$ctrl.success">
+									<span class="badge badge-pill badge-success">Success</span>
+									Project successfully added
+									<button class="close" type="button" data-dismiss="alert"
+										ng-click="$ctrl.success=false">
+										<span>x</span>
+									</button>
+								</div>
+								<div class="sufee-alert alert with-close alert-danger" ng-show="$ctrl.error">
+									<span class="badge badge-pill badge-danger">Error</span>
+									Error while adding project
+									<button class="close" type="button" data-dismiss="alert"
+										ng-click="$ctrl.error=false">
+										<span>x</span>
+									</button>
+								</div>
+							</div>
+						</div>
+						<form novalidate name="employeeAddForm" action="#" method="post" class="form-horizontal">
+
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-name">Customer Name</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input ng-model="$ctrl.project.customer_name" name="customer_name" class="form-control" id="hf-customer_name" type="text"
+										placeholder="Enter Name..."> <!-- ng-model="$ctrl.employee.name" ng-required="true">
+									<span
+										ng-show="employeeAddForm.name.$touched && employeeAddForm.name.$error.required">
+										Name can not be blank.
+									</span>-->
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-project_name">Project Name</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input ng-model="$ctrl.project.project_name" name="project_name" class="form-control" id="hf-project_name" type="text"
+										placeholder="Enter Project name..."> <!-- ng-model="$ctrl.employee.code" ng-required="true">
+									<span
+										ng-show="employeeAddForm.code.$touched && employeeAddForm.code.$error.required">
+										Employee Code can not be blank.
+									</span>-->
+								</div>
+							</div>
+							<div ng-repeat="quote in $ctrl.project.quote_set">
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-quote_no">Quote No.</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input ng-model="quote.quote_no" name="quote_no" class="form-control" id="hf-quote_no" type="text"
+									placeholder="Enter Quote no."/>
+										<!--ng-model="$ctrl.employee.designation" ng-required="true">
+										<option ng-repeat="option in $ctrl.designations" ng-value="option.id">
+											{{option.name}}</option>
+									</select>
+									<span
+										ng-show="employeeAddForm.designation.$touched && employeeAddForm.designation.$error.required">
+										Please select Designation
+									</span>-->
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-po_available">PO Available</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input ng-model="quote.po_available" name="po_available" class="form-control" id="hf-po_available" type="text">
+									<!-- ng-model="$ctrl.employee.role"
+										ng-required="true">
+										<option ng-repeat="option in $ctrl.roles" ng-value="option.id">{{option.name}}
+										</option>
+									</select>
+									<span
+										ng-show="employeeAddForm.role.$touched && employeeAddForm.role.$error.required">
+										Please select Role
+									</span>-->
+								</div>
+							</div>
+
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-po_no">PO No.</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input ng-model="quote.po_no" name="po_no" class="form-control" id="hf-po_no" type="text">
+										<!--ng-model="$ctrl.employee.own_partner" ng-required="true">
+										<option ng-repeat="option in $ctrl.own_partner" ng-value="option.id">
+											{{option.name}}</option>
+									</select>
+									<span
+										ng-show="employeeAddForm.own_partner.$touched && employeeAddForm.own_partner.$error.required">
+										Please select
+									</span>-->
+								</div>
+							</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-stcs_project_manager">STCS Project Manager</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<select class="form-control" name="stcs_project_manager" id="hf-stcs_project_manager"
+										ng-options="option as option.name for option in $ctrl.rgm track by option.id"
+										ng-model="$ctrl.project.stcs_project_manager" ng-change=$ctrl.updateEmail()><!-- ng-required="true">-->
+										<!--<option ng-repeat="option in $ctrl.rgm" ng-value="option.id">
+											{{option.name}}</option>-->
+									</select>									
+									<!--
+									<span
+										ng-show="employeeAddForm.project_billable.$touched && employeeAddForm.project_billable.$error.required">
+										Please select
+									</span>-->
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-stcs_project_manager_email">STCS Project Manager Email</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input class="form-control" name="stcs_project_manager_email" id="hf-stcs_project_manager_email" type="text"
+										ng-model="$ctrl.project.stcs_project_manager_email" ng-disabled="true"><!-- ng-required="true">-->
+									</select>
+									<!--<span
+										ng-show="employeeAddForm.project_billable.$touched && employeeAddForm.project_billable.$error.required">
+										Please select
+									</span>-->
+								</div>
+							</div>							
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-customer_project_manager">Customer Project Manager</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input ng-model="$ctrl.project.customer_project_manager" name="customer_project_manager" class="form-control" id="hf-customer_project_manager" type="text">
+										<!--ng-model="$ctrl.employee.first_level_reporting" ng-required="true" multiple>
+										<option ng-repeat="option in $ctrl.rgm" ng-value="option.id">{{option.name}}
+										</option>
+									</select>
+									<span
+										ng-show="employeeAddForm.first_level_reporting.$touched && employeeAddForm.first_level_reporting.$error.required">
+										Please select atleast one
+									</span>-->
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col col-md-3">
+									<label for="hf-customer_project_manager_email">Customer Project Manager Email</label>
+								</div>
+								<div class="col-12 col-md-9">
+									<input ng-model="$ctrl.project.customer_project_manager_email" name="customer_project_manager_email" class="form-control" id="hf-customer_project_manager_email" type="text">
+										<!--ng-model="$ctrl.employee.first_level_reporting" ng-required="true" multiple>
+										<option ng-repeat="option in $ctrl.rgm" ng-value="option.id">{{option.name}}
+										</option>
+									</select>
+									<span
+										ng-show="employeeAddForm.first_level_reporting.$touched && employeeAddForm.first_level_reporting.$error.required">
+										Please select atleast one
+									</span>-->
+								</div>
+							</div>							
+							<div class="row form-group">
+								<div class="col-md-3">
+								</div>
+								<div class="col-md-5">
+									<button ng-click="$ctrl.save()" class="btn btn-primary btn-lg btn-block"
+										type="button">Submit</button>
+								</div>
+								<div class="col-md-4">
+									<button ng-click="'#!/employee'| redirect"
+										class="btn btn-secondary btn-lg btn-block" type="button">Cancel</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="card-footer">
+					</div>
+
+				</div>
+			</aside>
+		</div>
+	</div>
+</div>
