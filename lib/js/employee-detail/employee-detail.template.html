@@ -60,20 +60,20 @@
                                     </div>				   
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-						<label for="hf-reporting_manager" >Reporting Manager</label>
+						<label for="hf-first_level_reporting" >1st Level Reporting</label>
 					</div>
                                         <div class="col-12 col-md-9">
-						<label ng-repeat="repm in $ctrl.employee.reporting_manager" for="hf-reporting_manager" >
+						<label ng-repeat="repm in $ctrl.employee.first_level_reporting" for="hf-first_level_reporting" >
 							<a href="#!/employee/{{ repm.id }}">{{ repm.name }}</a>
 						</label>
 					</div>
                                     </div>				    
                                     <div class="row form-group">
                                         <div class="col col-md-3">
-						<label for="hf-regional_manager" >Regional Manager</label>
+						<label for="hf-second_level_reporting" >2nd Level Reporting</label>
 					</div>
                                         <div class="col-12 col-md-9">
-						<label ng-repeat="regm in $ctrl.employee.regional_manager" for="hf-regional_manager" >
+						<label ng-repeat="regm in $ctrl.employee.second_level_reporting" for="hf-second_level_reporting" >
 							<a href="#!/employee/{{ regm.id }}"> {{ regm.name }}</a>
 						</label>
 					</div>

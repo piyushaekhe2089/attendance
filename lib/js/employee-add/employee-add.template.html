@@ -47,24 +47,6 @@
 							</div>
 							<div class="row form-group">
 								<div class="col col-md-3">
-									<label for="hf-photo">Photo</label>
-								</div>
-								<div class="col-12 col-md-9">
-									<input name="photo" class="form-control" id="hf-name" type="file"
-										placeholder="Select File..." ng-model="$ctrl.employee.photo">
-								</div>
-							</div>
-							<div class="row form-group">
-								<div class="col col-md-3">
-									<label for="hf-id_card">ID Card</label>
-								</div>
-								<div class="col-12 col-md-9">
-									<input name="id_card" class="form-control" id="hf-name" type="file"
-										placeholder="Select file..." ng-model="$ctrl.employee.id_card">
-								</div>
-							</div>
-							<div class="row form-group">
-								<div class="col col-md-3">
 									<label for="hf-code">Employee Code</label>
 								</div>
 								<div class="col-12 col-md-9">
@@ -143,33 +125,32 @@
 							</div>
 							<div class="row form-group">
 								<div class="col col-md-3">
-									<label for="hf-reporting_manager">Reporting Manager</label>
+									<label for="hf-first_level_reporting">First Level Reporting</label>
 								</div>
 								<div class="col-12 col-md-9">
-									<select name="reporting_manager" class="form-control" size="6"
-										ng-model="$ctrl.employee.reporting_manager" ng-required="true" multiple>
+									<select name="first_level_reporting" class="form-control" size="6"
+										ng-model="$ctrl.employee.first_level_reporting" ng-required="true" multiple>
 										<option ng-repeat="option in $ctrl.rgm" ng-value="option.id">{{option.name}}
 										</option>
 									</select>
 									<span
-										ng-show="employeeAddForm.reporting_manager.$touched && employeeAddForm.reporting_manager.$error.required">
+										ng-show="employeeAddForm.first_level_reporting.$touched && employeeAddForm.first_level_reporting.$error.required">
 										Please select atleast one
 									</span>
 								</div>
 							</div>
 							<div class="row form-group">
 								<div class="col col-md-3">
-									<label for="hf-regional_manager">Regional Manager</label>
+									<label for="hf-second_level_reporting">Second Level Reporting</label>
 								</div>
 								<div class="col-12 col-md-9">
-									<select name="regional_manager" class="form-control" size="6"
-										ng-model="$ctrl.employee.regional_manager"
-										ng-model="$ctrl.employee.regional_manager" ng-required="true" multiple>
+									<select name="second_level_reporting" class="form-control" size="6"
+										ng-model="$ctrl.employee.second_level_reporting" ng-required="true" multiple>
 										<option ng-repeat="option in $ctrl.rgm" ng-value="option.id">{{option.name}}
 										</option>
 									</select>
 									<span
-										ng-show="employeeAddForm.regional_manager.$touched && employeeAddForm.regional_manager.$error.required">
+										ng-show="employeeAddForm.second_level_reporting.$touched && employeeAddForm.second_level_reporting.$error.required">
 										Please select atleast one
 									</span>
 								</div>

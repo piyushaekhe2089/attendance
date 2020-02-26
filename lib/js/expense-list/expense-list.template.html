@@ -62,7 +62,7 @@
                                 <td style="white-space: nowrap">
                                     <div class="buttons" ng-show="!$ctrl.enabledEdit[{{$index}}]">
                                         <button type="button" class="btn btn-primary" ng-click="$ctrl.editClaim($index)"
-                                        ng-disabled="!claim.to_location">edit</button>
+                                        ng-disabled="!claim.to_location || claim.status != '' || claim.approved_created_by != 'Rejected'">edit</button>
                                     </div>
                                     <div class="buttons" ng-show="$ctrl.enabledEdit[{{$index}}]">
                                         <button type="button" class="btn btn-primary" ng-click="$ctrl.submitExpense(claim, $index)">
